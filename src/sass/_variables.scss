@@ -1,0 +1,65 @@
+// Spacing
+$spacer: 1rem !default;
+
+// Components
+$border-radius:               .25rem !default;
+
+// Color system
+$white:    #fff !default;
+$gray-500: #adb5bd !default;
+$black:    #000 !default;
+
+// Body
+$body-color:                 #212529 !default;
+
+// Typography
+$font-size-base:              1rem !default;
+$font-size-lg:                $font-size-base * 2.25 !default;
+
+$line-height-base:            1.5 !default;
+
+// Links
+$link-decoration:                         underline !default;
+$link-hover-decoration:                   null !default;
+
+// Navs
+$nav-link-padding-y:                .5rem !default;
+
+// Navbar
+$navbar-padding-y:                  $spacer / 2 !default;
+$navbar-padding-x:                  $spacer !default;
+
+$navbar-light-brand-color:          rgba($black, .9) !default;
+
+$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
+
+$navbar-brand-font-size:            $font-size-lg !default;
+$navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
+
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
+$navbar-brand-margin-end:           1rem !default;
+
+// Forms
+$input-padding-y:                       .375rem !default;
+$input-padding-x:                       .75rem !default;
+$input-font-family:                     null !default;
+$input-font-size:                       1rem * .875 !default;
+$input-font-weight:                     400 !default;
+$input-line-height:                     1.5 !default;
+
+$input-color:                           $body-color;
+$input-border-color:                    #ced4da !default;
+$input-border-width:                    1px !default;
+
+$input-bg:                              $white !default;
+
+// Buttons
+$btn-font-family:             $input-font-family !default;
+$btn-line-height:             $input-line-height !default;
+
+$btn-font-weight:             $input-font-weight !default;
+
+$btn-padding-y:               $input-padding-y !default;
+$btn-padding-x:               $input-padding-x !default;
+$btn-font-size:               1rem !default;
+$btn-border-radius:           $border-radius !default;

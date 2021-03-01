@@ -1,0 +1,57 @@
+<div class="main-container">
+  <div class="sized-container">
+    <div class="header">
+      <h1>Acceso de Usuario</h1>
+    </div>
+    <div class="body">
+      <form [formGroup]="formContent" (ngSubmit)="submitForm()">
+        <div>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="username"
+            placeholder="Usuario"
+            required
+          />
+          <div *ngIf="submit && formContent.controls.username.errors != undefined">
+            <div
+              class="danger"
+              *ngIf="formContent.controls.username.errors.required"
+            >
+              Este campo es obligatorio
+            </div>
+            <div
+              class="danger"
+              *ngIf="formContent.controls.username.errors.minlength"
+            >
+              Usuario demasiado corto
+            </div>
+          </div>
+        </div>
+        <div>
+          <input
+            class="form-control"
+            type="password"
+            formControlName="password"
+            placeholder="Contraseña"
+            required
+          />
+          <div *ngIf="submit && formContent.controls.password.errors != undefined">
+            <div
+              class="danger"
+              *ngIf="formContent.controls.password.errors.required"
+            >
+              Este campo es obligatorio
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          <button class="btn" [disabled]="!formContent.valid" type="submit">
+            Log In
+          </button>
+          <button class="btn" type="button" routerLink="/signin">Go Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

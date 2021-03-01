@@ -1,0 +1,106 @@
+<h1>
+  <small> Libro </small>
+</h1>
+<hr />
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" routerLink="/books">
+      <i class="fa fa-hand-point-left"></i>
+      <b> Volver a Biblioteca</b>
+    </button>
+  </div>
+</div>
+
+<div class="row m-1">
+  <div class="col m-1">
+    <form (ngSubmit)="postBook(data)" #data="ngForm">
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="text"
+          required
+          placeholder="Título"
+          [(ngModel)]="book.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="text"
+          required
+          placeholder="Autor"
+          [(ngModel)]="book.author"
+          name="author"
+        />
+      </div>
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="text"
+          required
+          placeholder="Editorial"
+          [(ngModel)]="book.publisher"
+          name="publisher"
+        />
+      </div>
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="text"
+          required
+          placeholder="Edición"
+          [(ngModel)]="book.edition"
+          name="edition"
+        />
+      </div>
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="number"
+          required
+          placeholder="Género de la estantería"
+          [(ngModel)]="book.pages"
+          name="pages"
+        />
+      </div>
+      <div class="form-group m-1">
+        <input
+          class="form-control"
+          type="text"
+          required
+          placeholder="ISBN"
+          [(ngModel)]="book.isbn"
+          name="isbn"
+        />
+      </div>
+      <div class="form-group m-1">
+        <label>Prestado</label>
+        <br />
+        <button
+          *ngIf="book.borrow"
+          (click)="book.borrow = false"
+          type="button"
+          class="btn btn-outline-success w-100"
+        >
+          <i class="fa fa-check"></i> Prestado
+        </button>
+        <button
+          *ngIf="!book.borrow"
+          (click)="book.borrow = true"
+          type="button"
+          class="btn btn-outline-danger w-100"
+        >
+          <i class="fa fa-times"></i> No prestado
+        </button>
+      </div>
+      <hr />
+      <div class="form-group m-1">
+        <button class="btn btn-primary w-100" type="submit">
+          <i class="fa fa-save"></i>
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

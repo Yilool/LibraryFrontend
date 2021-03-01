@@ -1,0 +1,48 @@
+.navbar {
+  //position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $navbar-padding-y;
+  padding-right: $navbar-padding-x;
+  padding-bottom: $navbar-padding-y;
+  padding-left: $navbar-padding-x;
+  background-color: $gray-500;
+
+  %container-flex-properties {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  > .container-fluid {
+    @extend %container-flex-properties;
+  }
+}
+
+.navbar-light {
+  .navbar-brand {
+    color: $navbar-light-brand-color;
+
+    &:hover,
+    &:focus {
+      color: $navbar-light-brand-color;
+    }
+  }
+}
+
+.navbar-brand {
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
+  margin-right: $navbar-brand-margin-end;
+  font-size: $navbar-brand-font-size;
+  text-decoration: if($link-decoration == none, null, none);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    text-decoration: if($link-hover-decoration == underline, none, null);
+  }
+}
