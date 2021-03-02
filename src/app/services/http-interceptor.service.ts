@@ -20,14 +20,10 @@ export class HttpInterceptorService implements HttpInterceptor {
     // Intento obtener el token JWT guardado en el AutenticadorJWT. Si ese token existe, lo meto en una cabecera de la petición que
     // va a salir hacia el servidor
     const token: string = this.autenticadorJwt.recuperaJWT();  
+
     if (token) {
       request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
     }
-
-    // Si no existe se expondrá el campo de Authorization de la petición para poder obtener el token
-    if (!token) {
-      request = request.clone({ headers: request.headers.set('Access-Control-Expose-Headers', 'Authorization') });
-    }  
 
     // Si no se ha especificado una cabecera 'Content-Type', introduzco una que indica que se envían datos JSON y se codifican con utf-8
     if (!request.headers.has('Content-Type')) {

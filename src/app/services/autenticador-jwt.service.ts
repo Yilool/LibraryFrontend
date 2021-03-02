@@ -1,32 +1,28 @@
 import { Injectable } from '@angular/core';
+import jwt_decode from 'jwt-decode';
 
-/**
- * Los servicios son, por defecto, inyectables
- */
 @Injectable({
   providedIn: 'root'
 })
 
 export class AutenticadorJwtService {
-  // La siguiente propiedad sólo estará activa por sesión de usuario.
-  jwtPorSesion: string; // Sólo utilizada si se desea que un mismo navegador pueda tener varias sesiones
-
   constructor() { }
 
   /**
-   * Permite guardar el jwt (token) recibido. Dejaremos comentada la línea que no queramos usar.
-   * @param token 
+   * Permite guardar el jwt (token) recibido.
    */
   almacenaJWT (token: string) {
-//    this.jwtPorSesion = token;   // Almacenamiento en la variable
+    const res: any = jwt_decode(token);
     localStorage.setItem("jwt", token);  // Guardo el JWT recibido del servidor, en el almacenamiento local
+    localStorage.setItem("user", res.username); 
+    localStorage.setItem("roles", res.roles); 
+    
   }
 
   /**
-   * Recupera el token (jwt). Puede hacerlo de una variable o del localStorage, según queramos.
+   * Recupera el token (jwt).
    */
   recuperaJWT (): string {
-//    return this.jwtPorSesion;
     return localStorage.getItem("jwt");
   }
 
@@ -34,7 +30,6 @@ export class AutenticadorJwtService {
    * Elimina el token (jwt) almacenado.
    */
   eliminaJWT () {
-//    this.jwtPorSesion = null;
     localStorage.removeItem("jwt");
   }
 

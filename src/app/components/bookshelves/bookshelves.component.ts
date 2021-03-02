@@ -23,6 +23,9 @@ export class BookshelvesComponent implements OnInit {
       this.bookshelves = res;
 
       this.loading = false;
+    },
+    (error) => {
+      alert(error.error);
     });
   }
 

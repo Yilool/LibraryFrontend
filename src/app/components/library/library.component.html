@@ -1,96 +1,77 @@
 <div class="container">
     <h1 class="text-center">Biblioteca</h1>
+    <button class="btn btn-primary" routerLink="/bookshelves">
+        <i class="fa fa-hand-point-left"></i>
+        <b> Ir a Estanterías</b>
+    </button>
     <hr />
     <div class="row">
-      <div class="col text-end">
-        <button class="btn btn-primary m-1" routerLink="/bookshelf/new">
-          <b> Registrar Libro</b>
-        </button>
-      </div>
+        <div class="col text-end">
+            <button class="btn btn-primary m-1" routerLink="/books/book/new">
+                <b> Registrar Libro</b>
+            </button>
+        </div>
     </div>
-  
-    <p-table
-      *ngIf="!loading && library.length > 0"
-      #bFilter
-      [value]="library"
-      dataKey="id"
-      [rows]="5"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[5, 10]"
-      [loading]="loading"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [globalFilterFields]="[
+
+    <p-table *ngIf="!loading && library.length > 0" #bFilter [value]="library" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10]" [loading]="loading" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="[
         'genre',
-      ]"
-    >
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="title">Título</th>
-          <th pSortableColumn="author">Autor</th>
-          <th pSortableColumn="publisher">Editorial</th>
-          <th pSortableColumn="edition">Edición</th>
-          <th pSortableColumn="isbn">ISBN</th>
-          <th pSortableColumn="pages">Página</th>
-          <th pSortableColumn="borrow">Estado</th>
-          <th>Operación</th>
-        </tr>
-        <tr>
-          <th>
-            <p-columnFilter type="text" field="title"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="author"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="publisher"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="edition"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="isbn"></p-columnFilter>
-          </th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-book>
-        <tr>
-          <td>{{ book.title }}</td>
-          <td>{{ book.author }}</td>
-          <td>{{ book.publisher }}</td>
-          <td>{{ book.edition }}</td>
-          <td>{{ book.isbn }}</td>
-          <td>{{ book.pages }}</td>
-          <td>
-            <label *ngIf="book.borrow" class="badge bg-success"
-              >Prestado</label
-            >
-            <label *ngIf="!book.borrow" class="badge bg-danger"
-              >No prestado</label
-            >
-          </td>
-          <td>
-            <button
-              pButton
-              class="m p-button-danger"
-              (click)="borrar(book)"
-              icon="fa fa-user-times"
-            >Borrar</button>
-          </td>
-        </tr>
-      </ng-template>
+      ]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="title">Título</th>
+                <th pSortableColumn="author">Autor</th>
+                <th pSortableColumn="publisher">Editorial</th>
+                <th pSortableColumn="edition">Edición</th>
+                <th pSortableColumn="isbn">ISBN</th>
+                <th pSortableColumn="pages">Página</th>
+                <th pSortableColumn="borrow">Estado</th>
+                <th>Operación</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="title"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="author"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="publisher"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="edition"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="isbn"></p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-book>
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.edition }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.pages }}</td>
+                <td>
+                    <label *ngIf="book.borrow" class="badge bg-success">Prestado</label>
+                    <label *ngIf="!book.borrow" class="badge bg-danger">No prestado</label>
+                </td>
+                <td>
+                    <button pButton class="m p-button-danger" (click)="borrar(book)" icon="fa fa-user-times">Borrar</button>
+                </td>
+            </tr>
+        </ng-template>
     </p-table>
-  
+
     <div *ngIf="loading" class="alert alert-info text-center">
-      <h3 class="alert-heading">Espere por favor ...</h3>
-      <i class="fa fa-sync-alt fa-spin fa-10x"></i>
+        <h3 class="alert-heading">Espere por favor ...</h3>
+        <i class="fa fa-sync-alt fa-spin fa-10x"></i>
     </div>
-  
-    <div
-      *ngIf="!loading && library.length === 0"
-      class="alert alert-warning text-center"
-    >
-      <h3 class="alert-heading">No hay registro</h3>
-      <i class="fa fa-exclamation fa-10x"></i>
+
+    <div *ngIf="!loading && library.length === 0" class="alert alert-warning text-center">
+        <h3 class="alert-heading">No hay registro</h3>
+        <i class="fa fa-exclamation fa-10x"></i>
     </div>
-  </div>
+</div>

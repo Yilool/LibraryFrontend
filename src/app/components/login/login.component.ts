@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.formContent = new FormGroup({
-      username: new FormControl('', [
+      username: new FormControl('yiyi', [
         Validators.required,
         Validators.minLength(4),
       ]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('yi', [Validators.required]),
     });
   }
 
@@ -51,16 +51,16 @@ export class LoginComponent implements OnInit {
         this.formContent.controls.username.value,
         this.formContent.controls.password.value
       )
-      .subscribe((res: any) => {
+      .subscribe((res) => {
         if (res != null && res != undefined) {
-          this.autenticadorJwtService.almacenaJWT(res.headers.get('Authorization').split(' ')[1].trim()); // Almaceno un nuevo JWT
+          this.autenticadorJwtService.almacenaJWT(res); // Almaceno un nuevo JWT
           console.log(this.autenticadorJwtService.recuperaJWT());
           
           this.router.navigate(['/books']);
           this.submit = true;
           this.resetForm();
           Swal.fire({
-            title: res.username,
+            title: this.formContent.controls.username.value,
             text: 'Logeado',
             icon: 'success',
           });

@@ -17,6 +17,8 @@ export class SignService {
     username: string,
     password: string
   ) {
+    localStorage.clear();
+
     const md5 = new Md5();
 
     var jsonObject = {

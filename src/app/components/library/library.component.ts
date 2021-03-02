@@ -23,7 +23,11 @@ export class LibraryComponent implements OnInit {
       this.library = res;
 
       this.loading = false;
-    });
+    },
+    (error) => {
+      alert(error.error);
+    }
+    );
   }
 
   borrar(book: Book) {

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TableModule } from 'primeng/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -14,6 +14,7 @@ import { BookshelfComponent } from './components/bookshelf/bookshelf.component';
 import { BookshelvesComponent } from './components/bookshelves/bookshelves.component';
 import { LibraryComponent } from './components/library/library.component';
 import { BookComponent } from './components/book/book.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { BookComponent } from './components/book/book.component';
     TableModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
