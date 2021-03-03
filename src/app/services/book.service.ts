@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/book';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BookService {
   private endpoint = '/book';

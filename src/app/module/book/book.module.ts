@@ -8,14 +8,11 @@ const routes: Routes = [
     path: '',
     component: LibraryComponent,
   },
-  { path: 'book/:id',
-    component: BookComponent
-  }
-
+  { path: 'book/:id', component: BookComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BookModule { }
+export class BookModule {}

@@ -2,18 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
+import { Bookshelf } from 'src/app/interfaces/bookshelf';
 import { BookService } from 'src/app/services/book.service';
+import { BookshelfService } from 'src/app/services/bookshelf.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
   book = new Book();
+  bookshelves: Bookshelf[] = [];
+  bookshelf: string;
 
   constructor(
+    private bookshelfservice: BookshelfService,
     private bookService: BookService,
     private route: ActivatedRoute,
     private router: Router
@@ -29,6 +34,19 @@ export class BookComponent implements OnInit {
         this.book.id = ident;
       });
     }
+
+    this.bookshelfservice.getBookshelves().subscribe(
+      (res: Bookshelf[]) => {
+        this.bookshelves = res;
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Exception',
+          icon: 'error',
+        });
+      }
+    );
   }
 
   postBook(data: NgForm) {

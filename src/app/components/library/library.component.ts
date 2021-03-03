@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
-  styleUrls: ['./library.component.scss']
+  styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent implements OnInit {
   library: Book[] = [];
@@ -19,14 +19,19 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.bookservice.getBooks().subscribe((res: Book[]) => {
-      this.library = res;
+    this.bookservice.getBooks().subscribe(
+      (res: Book[]) => {
+        this.library = res;
 
-      this.loading = false;
-    },
-    (error) => {
-      alert(error.error);
-    }
+        this.loading = false;
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Exception',
+          icon: 'error',
+        });
+      }
     );
   }
 

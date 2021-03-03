@@ -19,14 +19,20 @@ export class BookshelvesComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.bookshelfservice.getBookshelves().subscribe((res: Bookshelf[]) => {
-      this.bookshelves = res;
+    this.bookshelfservice.getBookshelves().subscribe(
+      (res: Bookshelf[]) => {
+        this.bookshelves = res;
 
-      this.loading = false;
-    },
-    (error) => {
-      alert(error.error);
-    });
+        this.loading = false;
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Exception',
+          icon: 'error',
+        });
+      }
+    );
   }
 
   borrar(bookshelf: Bookshelf) {
@@ -62,7 +68,9 @@ export class BookshelvesComponent implements OnInit {
   }
 
   isLastPage(): boolean {
-    return this.bookshelves ? this.first === this.bookshelves.length - this.rows : true;
+    return this.bookshelves
+      ? this.first === this.bookshelves.length - this.rows
+      : true;
   }
 
   isFirstPage(): boolean {

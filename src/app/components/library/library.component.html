@@ -15,7 +15,13 @@
 
     <p-table *ngIf="!loading && library.length > 0" #bFilter [value]="library" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10]" [loading]="loading" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="[
-        'genre',
+        'title',
+        'author',
+        'publisher',        
+        'edition',        
+        'isbn',        
+        'pages',        
+        'bookShelf'
       ]">
         <ng-template pTemplate="header">
             <tr>
@@ -25,7 +31,8 @@
                 <th pSortableColumn="edition">Edición</th>
                 <th pSortableColumn="isbn">ISBN</th>
                 <th pSortableColumn="pages">Página</th>
-                <th pSortableColumn="borrow">Estado</th>
+                <th pSortableColumn="bookShelf">Estantería</th>
+                <th pSortableColumn="isbn">Estado</th>
                 <th>Operación</th>
             </tr>
             <tr>
@@ -54,11 +61,13 @@
                 <td>{{ book.edition }}</td>
                 <td>{{ book.isbn }}</td>
                 <td>{{ book.pages }}</td>
+                <td>{{ book.bookShelf }}</td>
                 <td>
                     <label *ngIf="book.borrow" class="badge bg-success">Prestado</label>
                     <label *ngIf="!book.borrow" class="badge bg-danger">No prestado</label>
                 </td>
                 <td>
+                    <button pButton class="m p-button-danger" routerLink="/books/book/new" icon="fa fa-user-times">Prestar</button>
                     <button pButton class="m p-button-danger" (click)="borrar(book)" icon="fa fa-user-times">Borrar</button>
                 </td>
             </tr>

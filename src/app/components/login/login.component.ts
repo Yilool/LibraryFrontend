@@ -54,8 +54,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res) => {
         if (res != null && res != undefined) {
           this.autenticadorJwtService.almacenaJWT(res); // Almaceno un nuevo JWT
-          console.log(this.autenticadorJwtService.recuperaJWT());
-          
+
           this.router.navigate(['/books']);
           this.submit = true;
           this.resetForm();
