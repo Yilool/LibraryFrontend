@@ -1,9 +1,13 @@
-<nav class="navbar navbar-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">BiblYIo</a>
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-    </div>
-    <button class="btn" type="submit"><b>User</b></button>
+<nav class="topnav" id="myTopnav">
+    <a>BiblYo</a>
+    <a [routerLink]="['/books']" routerLinkActive="router-link-active">Biblioteca</a>
+    <a [routerLink]="['/bookshelves']" routerLinkActive="router-link-active">Estanterías</a>
+    <a [routerLink]="['/borrows']" routerLinkActive="router-link-active">Préstamos</a>
+    <a [routerLink]="['/we']" routerLinkActive="router-link-active">Acerca deNosotros</a>
+    <a href="javascript:void(0);" class="icon" (click)=(myFunction())>
+        <i class="fa fa-bars"></i>
+    </a>
+    <!-- <button *ngIf="!logedUser" class="btn" type="submit" (click)=(logout())><b>LogOut</b></button> -->
 </nav>
 
 <router-outlet></router-outlet>

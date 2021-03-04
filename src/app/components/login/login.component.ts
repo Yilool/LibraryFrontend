@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
   formContent: FormGroup;
   submit = false;
+  routeRedirect = '';
 
   constructor(
     private logService: LogService,
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/books']);
           this.submit = true;
           this.resetForm();
+          this.logService.logStatusUser.next(true);
           Swal.fire({
             title: this.formContent.controls.username.value,
             text: 'Logeado',

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { BookshelvesComponent } from './components/bookshelves/bookshelves.compo
 import { LibraryComponent } from './components/library/library.component';
 import { BookComponent } from './components/book/book.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { IsLoggedGuard } from './guards/is-logged.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     BookshelfComponent,
     BookshelvesComponent,
     LibraryComponent,
-    BookComponent
+    BookComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +34,16 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     FormsModule,
     HttpClientModule,
     TableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+    IsLoggedGuard,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
