@@ -1,168 +1,87 @@
-<div class="main-container">
-  <div class="sized-container">
-    <div class="header">
-      <h1>Registro de Usuario</h1>
-    </div>
-    <div class="body">
-      <form [formGroup]="formContent" (ngSubmit)="submitForm()">
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="name"
-            placeholder="Nombre"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.name.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.name.errors.required"
-            >
-              Este campo es obligatorio
+<div>
+  <div class="login-container">
+    <div class="card">
+      <p class="card__name">Registro de Usuario</p>
+      <div class="grid-container">
+        <form [formGroup]="formContent" (ngSubmit)="submitForm()">
+          <div>
+            <input class="form-control" type="text" formControlName="name" placeholder="Nombre" required />
+            <div *ngIf="submit && formContent.controls.name.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.name.errors.required">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="surname"
-            placeholder="Apellido"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.surname.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.surname.errors.required"
-            >
-              Este campo es obligatorio
+          <div>
+            <input class="form-control" type="text" formControlName="surname" placeholder="Apellido" required />
+            <div *ngIf="submit && formContent.controls.surname.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.surname.errors.required">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="dni"
-            placeholder="DNI"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.dni.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.dni.errors.required"
-            >
-              Este campo es obligatorio
-            </div>
-            <div
-              class="danger"
-              *ngIf="formContent.controls.dni.errors.minlength"
-            >
-              DNI demasiado corto
-            </div>
-            <div
-              class="danger"
-              *ngIf="formContent.controls.dni.errors.maxlength"
-            >
-              DNI demasiado largo
+          <div>
+            <input class="form-control" type="text" formControlName="dni" placeholder="DNI" required />
+            <div *ngIf="submit && formContent.controls.dni.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.dni.errors.required">
+                Este campo es obligatorio
+              </div>
+              <div class="danger" *ngIf="formContent.controls.dni.errors.minlength">
+                DNI demasiado corto
+              </div>
+              <div class="danger" *ngIf="formContent.controls.dni.errors.maxlength">
+                DNI demasiado largo
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="birthdate"
-            placeholder="birthdate: DD/MM/YYYY"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.birthdate.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.birthdate.errors.required"
-            >
-              Este campo es obligatorio
+          <div>
+            <input class="form-control" type="text" formControlName="birthdate" placeholder="birthdate: DD/MM/YYYY"
+              required />
+            <div *ngIf="submit && formContent.controls.birthdate.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.birthdate.errors.required">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="number"
-            placeholder="Tlfn"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.number.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.number.errors.required"
-            >
-              Este campo es obligatorio
-            </div>
-            <div
-              class="danger"
-              *ngIf="formContent.controls.number.errors.minlength"
-            >
-              Numero demasiado corto
-            </div>
-            <div
-              class="danger"
-              *ngIf="formContent.controls.number.errors.maxlength"
-            >
-              Numero demasiado largo
+          <div>
+            <input class="form-control" type="text" formControlName="number" placeholder="Tlfn" required />
+            <div *ngIf="submit && formContent.controls.number.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.number.errors.required">
+                Este campo es obligatorio
+              </div>
+              <div class="danger" *ngIf="formContent.controls.number.errors.minlength">
+                Numero demasiado corto
+              </div>
+              <div class="danger" *ngIf="formContent.controls.number.errors.maxlength">
+                Numero demasiado largo
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="text"
-            formControlName="username"
-            placeholder="Usuario"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.username.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.username.errors.required"
-            >
-              Este campo es obligatorio
-            </div>
-            <div
-              class="danger"
-              *ngIf="formContent.controls.username.errors.minlength"
-            >
-              Usuario demasiado corto
+          <div>
+            <input class="form-control" type="text" formControlName="username" placeholder="Usuario" required />
+            <div *ngIf="submit && formContent.controls.username.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.username.errors.required">
+                Este campo es obligatorio
+              </div>
+              <div class="danger" *ngIf="formContent.controls.username.errors.minlength">
+                Usuario demasiado corto
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <input
-            class="form-control"
-            type="password"
-            formControlName="password"
-            placeholder="Contraseña"
-            required
-          />
-          <div *ngIf="submit && formContent.controls.password.errors != undefined">
-            <div
-              class="danger"
-              *ngIf="formContent.controls.password.errors.required"
-            >
-              Este campo es obligatorio
+          <div>
+            <input class="form-control" type="password" formControlName="password" placeholder="Contraseña" required />
+            <div *ngIf="submit && formContent.controls.password.errors != undefined">
+              <div class="danger" *ngIf="formContent.controls.password.errors.required">
+                Este campo es obligatorio
+              </div>
             </div>
           </div>
-        </div>
-        <div class="button">
-          <button class="btn" [disabled]="!formContent.valid" type="submit">
-            Sign In
-          </button>
-          <button class="btn" type="button" routerLink="/login">
-            Go Log In
-          </button>
-        </div>
-      </form>
+          <div>
+            <button class="login-btn draw-border" type="submit" [disabled]="!formContent.valid">Sign In</button>
+            <button class="login-btn draw-border" type="button" routerLink="/login">Go Log In</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

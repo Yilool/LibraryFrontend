@@ -16,6 +16,7 @@ import { LibraryComponent } from './components/library/library.component';
 import { BookComponent } from './components/book/book.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { IsLoggedGuard } from './guards/is-logged.guard';
+import { WeComponent } from './components/we/we.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { IsLoggedGuard } from './guards/is-logged.guard';
     BookshelvesComponent,
     LibraryComponent,
     BookComponent,
+    WeComponent,
   ],
   imports: [
     BrowserModule,

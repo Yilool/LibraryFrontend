@@ -1,1 +1,20 @@
+.form-control {
+    width: 100%;
+    padding: 12px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
 
+.danger {
+  margin: 1em;
+  color: red;
+}
+
+@media screen and (max-width: 600px) {
+    .form-control {
+      width: 94%;
+      margin-top: 0;
+    }
+}

@@ -7,6 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { LogService } from '../services/log.service';
 
 @Injectable({
@@ -27,6 +28,12 @@ export class IsLoggedGuard implements CanActivate {
       return true;
     }
 
+    Swal.fire({
+      title: 'Usted no está logeado',
+      text: 'Para usar los siquientes servicios debe loguearse',
+      icon: 'error',
+    });
+    
     this.router.navigate(['login']);
 
     return false;
