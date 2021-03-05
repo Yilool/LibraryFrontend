@@ -1,38 +1,31 @@
-<h1>
-  <small> Género</small>
-</h1>
-<hr />
-<div class="row">
-  <div class="col">
-    <button class="btn btn-primary" routerLink="/bookshelves">
-      <i class="fa fa-hand-point-left"></i>
-      <b> Volver a Estanterías</b>
-    </button>
-  </div>
+<div class="center-container separated-container">
+    <h1>
+        <small> Género</small>
+    </h1>
+    <div>
+        <div>
+            <button class="btn" routerLink="/bookshelves">
+        <i class="fa fa-hand-point-left"></i>
+        <b> Volver a Estanterías</b>
+      </button>
+        </div>
+    </div>
 </div>
+<hr />
 
 <div class="row m-1">
-  <div class="col m-1">
-    <form (ngSubmit)="registrar(data)" #data="ngForm">
-      <div class="form-group m-1">
-        <input
-          class="form-control"
-          type="text"
-          required
-          placeholder="Género de la estantería"
-          [(ngModel)]="bookshelf.genre"
-          name="genre"
-        />
-      </div>
-      <hr />
-      <div class="form-group m-1">
-        <button class="btn btn-primary w-100" type="submit">
+    <div class="col m-1">
+        <form (ngSubmit)="registrar(data)" #data="ngForm">
+            <div class="form-group">
+                <input class="form-control" type="text" required placeholder="Género de la estantería" [(ngModel)]="bookshelf.genre" name="genre" />
+            </div>
+            <hr />
+            <div class="form-group">
+                <button class="btn btn-primary w-100" type="submit">
           <i class="fa fa-save"></i>
           Registrar
         </button>
-      </div>
-    </form>
-  </div>
+            </div>
+        </form>
+    </div>
 </div>
-
-

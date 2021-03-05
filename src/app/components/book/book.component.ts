@@ -49,6 +49,44 @@ export class BookComponent implements OnInit {
     );
   }
 
+  postPut(data: NgForm) {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id !== 'new') {
+      this.putBook(data);
+    } else {
+      this.postBook(data);
+    }
+  }
+
+  putBook(data: NgForm) {
+    Swal.fire({
+      title: 'Espere',
+      text: 'Actualizando libro',
+      icon: 'info',
+      allowOutsideClick: false,
+    });
+    Swal.showLoading();
+
+    this.bookService.putBook(this.book).subscribe(
+      (res) => {
+        Swal.fire({
+          title: `${this.book.title} de ${this.book.author}`,
+          text: 'Actualizado',
+          icon: 'success',
+        });
+        this.router.navigate(['/books']);
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Exception',
+          icon: 'error',
+        });
+      }
+    );
+  }
+
   postBook(data: NgForm) {
     Swal.fire({
       title: 'Espere',
@@ -58,13 +96,22 @@ export class BookComponent implements OnInit {
     });
     Swal.showLoading();
 
-    this.bookService.postBook(this.book).subscribe((res) => {
-      Swal.fire({
-        title: `${this.book.title} de ${this.book.author}`,
-        text: 'Creado',
-        icon: 'success',
-      });
-      this.router.navigate(['/books']);
-    });
+    this.bookService.postBook(this.book).subscribe(
+      (res) => {
+        Swal.fire({
+          title: `${this.book.title} de ${this.book.author}`,
+          text: 'Creado',
+          icon: 'success',
+        });
+        this.router.navigate(['/books']);
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Exception',
+          icon: 'error',
+        });
+      }
+    );
   }
 }

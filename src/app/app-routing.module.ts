@@ -4,11 +4,11 @@ import { BookshelfComponent } from './components/bookshelf/bookshelf.component';
 import { BookshelvesComponent } from './components/bookshelves/bookshelves.component';
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { WeComponent } from './components/we/we.component';
 import { IsLoggedGuard } from './guards/is-logged.guard';
-import { LogService } from './services/log.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '', redirectTo: '/we', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'signin', component: SigninComponent },
   {
@@ -22,11 +22,15 @@ const routes: Routes = [
     canActivate: [IsLoggedGuard],
   },
   {
+    path: 'we',
+    component: WeComponent,
+  },
+  {
     path: 'books',
     loadChildren: () =>
       import('./module/book/book.module').then((m) => m.BookModule),
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'books' },
+  { path: '**', pathMatch: 'full', redirectTo: 'we' },
 ];
 
 @NgModule({

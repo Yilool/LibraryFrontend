@@ -23,14 +23,3 @@
     margin-top: 20px;
     box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
 }
-
-@media screen and (max-width: 600px) { 
-    .login-container {
-        display: grid;
-        grid-template-columns: 350px;
-        grid-gap: 50px;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-}

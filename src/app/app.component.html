@@ -1,14 +1,4 @@
-<nav class="topnav" id="myTopnav">
-    <a>BiblYo</a>
-    <a [routerLink]="['/books']" routerLinkActive="router-link-active">Biblioteca</a>
-    <a [routerLink]="['/bookshelves']" routerLinkActive="router-link-active">Estanterías</a>
-    <a [routerLink]="['/borrows']" routerLinkActive="router-link-active">Préstamos</a>
-    <a [routerLink]="['/we']" routerLinkActive="router-link-active">Acerca de Nosotros</a>
-    <a href="javascript:void(0);" class="icon" (click)=(myFunction())>
-        <i class="fa fa-bars"></i>
-    </a>
-    <!-- <button *ngIf="!logedUser" class="btn" type="submit" (click)=(logout())><b>LogOut</b></button> -->
-</nav>
+<app-navbar></app-navbar>
 
 <router-outlet></router-outlet>
 

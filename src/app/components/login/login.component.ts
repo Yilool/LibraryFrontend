@@ -52,26 +52,35 @@ export class LoginComponent implements OnInit {
         this.formContent.controls.username.value,
         this.formContent.controls.password.value
       )
-      .subscribe((res) => {
-        if (res != null && res != undefined) {
-          this.autenticadorJwtService.almacenaJWT(res); // Almaceno un nuevo JWT
+      .subscribe(
+        (res) => {
+          if (res != null && res != undefined) {
+            this.autenticadorJwtService.almacenaJWT(res); // Almaceno un nuevo JWT
 
-          this.router.navigate(['/books']);
-          this.submit = true;
-          this.resetForm();
-          this.logService.logStatusUser.next(true);
+            this.router.navigate(['/books']);
+            this.submit = true;
+            this.resetForm();
+            this.logService.logStatusUser.next(true);
+            Swal.fire({
+              title: this.formContent.controls.username.value,
+              text: 'Logeado',
+              icon: 'success',
+            });
+          } else {
+            Swal.fire({
+              title: 'Oops...',
+              text: 'Username or password invalid',
+              icon: 'error',
+            });
+          }
+        },
+        (error) => {
           Swal.fire({
-            title: this.formContent.controls.username.value,
-            text: 'Logeado',
-            icon: 'success',
-          });
-        } else {
-          Swal.fire({
-            title: 'Oops...',
-            text: 'Username or password invalid',
+            title: `${error.error}`,
+            text: 'Exception',
             icon: 'error',
           });
         }
-      });
+      );
   }
 }

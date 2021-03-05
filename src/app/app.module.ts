@@ -17,6 +17,7 @@ import { BookComponent } from './components/book/book.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { IsLoggedGuard } from './guards/is-logged.guard';
 import { WeComponent } from './components/we/we.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { WeComponent } from './components/we/we.component';
     LibraryComponent,
     BookComponent,
     WeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

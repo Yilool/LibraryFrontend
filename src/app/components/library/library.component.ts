@@ -31,6 +31,7 @@ export class LibraryComponent implements OnInit {
           text: 'Exception',
           icon: 'error',
         });
+        this.loading = false;
       }
     );
   }
@@ -42,6 +43,8 @@ export class LibraryComponent implements OnInit {
       showConfirmButton: true,
       showCancelButton: true,
     }).then((res) => {
+      console.log(res);
+
       if (res.value) {
         this.bookservice.deleteBook(book.id).subscribe((res) => {
           Swal.fire({
@@ -50,31 +53,8 @@ export class LibraryComponent implements OnInit {
             icon: 'success',
           });
         });
+        this.ngOnInit();
       }
     });
-  }
-
-  next() {
-    this.first = this.first + this.rows;
-  }
-
-  prev() {
-    this.first = this.first - this.rows;
-  }
-
-  reset() {
-    this.first = 0;
-  }
-
-  isLastPage(): boolean {
-    return this.library ? this.first === this.library.length - this.rows : true;
-  }
-
-  isFirstPage(): boolean {
-    return this.library ? this.first === 0 : true;
-  }
-
-  clear(table: Table) {
-    table.clear();
   }
 }

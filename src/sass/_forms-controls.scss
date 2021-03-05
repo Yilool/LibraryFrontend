@@ -1,5 +1,17 @@
 .form-control {
-    width: 100%;
+    width: 95%;
+    padding: 12px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 97%;
     padding: 12px;
     margin: 10px;
     border: 1px solid #ccc;
@@ -8,13 +20,13 @@
 }
 
 .danger {
-  margin: 1em;
-  color: red;
+    margin: 1em;
+    color: red;
 }
 
 @media screen and (max-width: 600px) {
     .form-control {
-      width: 94%;
-      margin-top: 0;
+        width: 94%;
+        margin-top: 0;
     }
 }

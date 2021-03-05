@@ -31,6 +31,7 @@ export class BookshelvesComponent implements OnInit {
           text: 'Exception',
           icon: 'error',
         });
+        this.loading = false;
       }
     );
   }
@@ -42,6 +43,8 @@ export class BookshelvesComponent implements OnInit {
       showConfirmButton: true,
       showCancelButton: true,
     }).then((res) => {
+      console.log(bookshelf);
+
       if (res.value) {
         this.bookshelfservice.deleteBookshelf(bookshelf.id).subscribe((res) => {
           Swal.fire({

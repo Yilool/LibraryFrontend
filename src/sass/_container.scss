@@ -1,3 +1,23 @@
 .center-container {
-    @include flex-box();
+    @include center-flex-box();
+}
+
+.nav-btn-container {
+    display: flex;
+    flex-flow: row;
+}
+
+.separated-container {
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+    .login-container {
+        display: grid;
+        grid-template-columns: 350px;
+        grid-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 }
