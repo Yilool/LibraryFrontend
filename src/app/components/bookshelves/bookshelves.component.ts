@@ -10,21 +10,27 @@ import Swal from 'sweetalert2';
   styleUrls: ['./bookshelves.component.scss'],
 })
 export class BookshelvesComponent implements OnInit {
+  // variable
   bookshelves: Bookshelf[] = [];
-  loading = false;
+  loading = false; // boleano para mostrar div de notificación
   first = 0;
   rows = 10;
 
+  // contructur con inyecciones de servicios
   constructor(private bookshelfservice: BookshelfService) {}
 
   ngOnInit(): void {
+    // establezco el boleano a verdadero
     this.loading = true;
+    // obtengo las estanterías
     this.bookshelfservice.getBookshelves().subscribe(
+      // subscrición
       (res: Bookshelf[]) => {
         this.bookshelves = res;
 
         this.loading = false;
       },
+      // notificación de error para casos de errores
       (error) => {
         Swal.fire({
           title: `${error.error}`,
@@ -36,51 +42,36 @@ export class BookshelvesComponent implements OnInit {
     );
   }
 
+  // función de borrado
   borrar(bookshelf: Bookshelf) {
+    // notificación de confirmación
     Swal.fire({
       title: 'Confirme la operación',
       icon: 'question',
       showConfirmButton: true,
       showCancelButton: true,
     }).then((res) => {
-      console.log(bookshelf);
-
+      // me suscrivo a la respuesta de la notificacion
       if (res.value) {
+        // si respuesta afirmativo llamoa para borrar la estantería
         this.bookshelfservice.deleteBookshelf(bookshelf.id).subscribe((res) => {
+          //suscripción al borrado para mostrar el borrado exitoso
           Swal.fire({
             title: `Estantería de ${bookshelf.genre}`,
             text: 'Eliminado',
             icon: 'success',
           });
+          // reinicio el componente
           this.ngOnInit();
+        });
+      } else {
+        // si respuesta negativa, notifico la cancelacion de la operación
+        Swal.fire({
+          title: `Operación cancelado`,
+          text: 'Cancelada',
+          icon: 'error',
         });
       }
     });
-  }
-
-  next() {
-    this.first = this.first + this.rows;
-  }
-
-  prev() {
-    this.first = this.first - this.rows;
-  }
-
-  reset() {
-    this.first = 0;
-  }
-
-  isLastPage(): boolean {
-    return this.bookshelves
-      ? this.first === this.bookshelves.length - this.rows
-      : true;
-  }
-
-  isFirstPage(): boolean {
-    return this.bookshelves ? this.first === 0 : true;
-  }
-
-  clear(table: Table) {
-    table.clear();
   }
 }

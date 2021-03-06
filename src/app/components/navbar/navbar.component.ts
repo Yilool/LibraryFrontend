@@ -9,9 +9,11 @@ import { LogService } from 'src/app/services/log.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  // variables
   logedUser = false;
   roles: any;
 
+  // constructor con las inyecciones
   constructor(
     private logService: LogService,
     private router: Router,
@@ -19,27 +21,31 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // pregunta al servicio si esta logueado
     this.logedUser = this.logService.isLoggedIn('');
     this.logService.logStatus$.subscribe((logStat: boolean) => {
       this.logedUser = logStat;
     });
+    // me suscribo al output del servicio para obtener los roles
     this.rol.rol.subscribe((res) => {
       this.roles = res;
     });
   }
 
+  // desloguearse
   logout() {
     this.logService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/we']);
     this.ngOnInit();
   }
 
+  // funcion para navbar responsive
   myFunction() {
-    var x = document.getElementById('myTopnav');
-    if (x.className === 'topnav') {
-      x.className += ' responsive';
+    var nav = document.getElementById('myTopnav');
+    if (nav.className === 'topnav') {
+      nav.className += ' responsive';
     } else {
-      x.className = 'topnav';
+      nav.className = 'topnav';
     }
   }
 }

@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AutenticadorJwtService {
+  // output para los roles del usuario
   @Output()
   rol = new EventEmitter<any>();
 
@@ -16,12 +17,16 @@ export class AutenticadorJwtService {
    * Permite guardar el jwt (token) recibido.
    */
   almacenaJWT(token: string) {
+    // decodifico el token recibido
     const res: any = jwt_decode(token);
-    localStorage.setItem('jwt', token); // Guardo el JWT recibido del servidor, en el almacenamiento local
+    // Guardo el JWT recibido del servidor, el usuario y rol del jwt, en el almacenamiento local
+    localStorage.setItem('jwt', token);
     localStorage.setItem('user', res.username);
     localStorage.setItem('roles', res.roles);
 
+    // igualo el rol del jwt a una variable global
     this.roles = res.roles;
+    // emito el los roles para otros componentes
     this.emitRol();
   }
 

@@ -25,6 +25,7 @@ const routes: Routes = [
     path: 'we',
     component: WeComponent,
   },
+  // lazyloading para las rutas de libros
   {
     path: 'books',
     loadChildren: () =>

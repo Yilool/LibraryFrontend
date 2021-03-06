@@ -73,13 +73,13 @@
         </ng-template>
     </p-table>
 
-    <div *ngIf="loading" class="alert alert-info text-center">
-        <h3 class="alert-heading">Espere por favor ...</h3>
+    <div *ngIf="loading" class="alert-info">
+        <h3>Espere por favor ...</h3>
         <i class="fa fa-sync-alt fa-spin fa-10x"></i>
     </div>
 
-    <div *ngIf="!loading && library.length === 0 || library == null" class="alert alert-warning text-center">
-        <h3 class="alert-heading">No hay registro</h3>
+    <div *ngIf="!loading && library.length === 0 || library == null" class="alert-warning">
+        <h3>No hay registro</h3>
         <i class="fa fa-exclamation fa-10x"></i>
     </div>
 </div>

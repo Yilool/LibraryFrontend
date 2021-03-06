@@ -10,12 +10,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  formContent: FormGroup;
+  // variable
+  formContent: FormGroup; // formulario
   submit = true;
 
+  // constructor con las inyecciones
   constructor(private signService: SignService, private router: Router) {}
 
   ngOnInit(): void {
+    // creo el formularios y sus campos con la validaciones
     this.formContent = new FormGroup({
       name: new FormControl('yi', [Validators.required]),
       surname: new FormControl('yi', [Validators.required]),
@@ -38,12 +41,14 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  // resetea el formulario y establece false
   resetForm(): void {
     this.submit = false;
     this.formContent.reset();
   }
-
+// envía el formulario
   submitForm() {
+    // notificación de cargando para evitar mas acciones
     Swal.fire({
       title: 'Espere',
       text: 'Guardando información',
@@ -52,6 +57,7 @@ export class SigninComponent implements OnInit {
     });
     Swal.showLoading();
 
+    // llamo al servicio para enviar los datos del formulario
     this.signService
       .signin(
         this.formContent.controls.name.value,
@@ -62,17 +68,21 @@ export class SigninComponent implements OnInit {
         this.formContent.controls.username.value,
         this.formContent.controls.password.value
       )
+      // me suscribo a la respuesta
       .subscribe(
+        // si no es erronea notifico
         (res: any) => {
           Swal.fire({
             title: res.username,
             text: 'Creado',
             icon: 'success',
           });
+          // redirijo a login
           this.router.navigate(['/login']);
           this.submit = true;
           this.resetForm();
         },
+        // si es erronea notifico el error
         (error) => {
           Swal.fire({
             title: `${error.error}`,

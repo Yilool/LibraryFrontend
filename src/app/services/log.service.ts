@@ -25,14 +25,17 @@ export class LogService {
       password: password,
     };
 
+    // establezco que la respuesta de la peticion será de tipo texto
     return this.http.post('/user/log-in', logUser, { responseType: 'text' });
   }
 
   logout() {
+    // borra los datos del almacenamiento local
     localStorage.clear();
     this.logStatusUser.next(true);
   }
 
+  // determina si está el usuario logueado intentando obtener el jwt del almacenamiento local
   isLoggedIn(url: string) {
     const isLogged = localStorage.getItem('jwt');
 

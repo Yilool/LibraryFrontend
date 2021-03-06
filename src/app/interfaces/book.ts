@@ -9,6 +9,7 @@ export class Book {
   bookShelf: string;
   borrow: boolean;
 
+  // cada objeto de estaclase que se cree estará a false
   constructor() {
     this.borrow = false;
   }

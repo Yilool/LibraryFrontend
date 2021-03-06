@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, finalize} from 'rxjs/operators';
 import { AutenticadorJwtService } from './autenticador-jwt.service'; 
 
-// Al ser un servicio, esta clase debe ser Inyectable
 @Injectable({
   providedIn: 'root'
 })

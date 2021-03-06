@@ -1,0 +1,11 @@
+.alert-info {
+    @include center-flex-box();
+    flex-direction: column;
+    background-color: $infoColor;
+}
+
+.alert-warning {
+    @include center-flex-box();
+    flex-direction: column;
+    background-color: $warningColor;
+}

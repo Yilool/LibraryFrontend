@@ -14,6 +14,7 @@ import { LogService } from '../services/log.service';
   providedIn: 'root',
 })
 export class IsLoggedGuard implements CanActivate {
+  // constructor con las inyecciones
   constructor(private logService: LogService, private router: Router) {}
 
   canActivate(
@@ -24,16 +25,19 @@ export class IsLoggedGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
+    // verifica si está logeado preguntando al servicio
     if (this.logService.isLoggedIn(state.url)) {
       return true;
     }
 
+    // sino lo esta, notifico que se debe loguearse
     Swal.fire({
       title: 'Usted no está logeado',
       text: 'Para usar los siquientes servicios debe loguearse',
       icon: 'error',
     });
     
+    // redireciono al login
     this.router.navigate(['login']);
 
     return false;

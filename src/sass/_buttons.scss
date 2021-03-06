@@ -16,15 +16,15 @@
     margin: 1em;
     width: 13rem;
     &:focus {
-        outline: 2px dotted #55d7dc;
+        outline: 2px dotted $btnColor;
     }
 }
 
 .draw-border {
-    box-shadow: inset 0 0 0 4px #58cdd1;
-    color: #58afd1;
-    -webkit-transition: color 0.25s 0.0833333333s;
-    transition: color 0.25s 0.0833333333s;
+    box-shadow: inset 0 0 0 4px $btnColor;
+    color: $btnColor;
+    -webkit-transition: $borderDrawTransition;
+    transition: $borderDrawTransition;
     position: relative;
     &::before,
     &::after {
@@ -47,23 +47,23 @@
         border-right-width: 4px;
     }
     &:hover {
-        color: #ffe593;
+        color:  $hoverColor;
     }
     &:hover::before,
     &:hover::after {
-        border-color: #eb196e;
-        -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
-        transition: border-color 0s, width 0.25s, height 0.25s;
+        border-color: $hoverColor;
+        -webkit-transition: $hoverTransition;
+        transition: $hoverTransition;
         width: 100%;
         height: 100%;
     }
     &:hover::before {
-        -webkit-transition-delay: 0s, 0s, 0.25s;
-        transition-delay: 0s, 0s, 0.25s;
+        -webkit-transition-delay: $hoverTransitionDelay;
+        transition-delay: $hoverTransitionDelay;
     }
     &:hover::after {
-        -webkit-transition-delay: 0s, 0.25s, 0s;
-        transition-delay: 0s, 0.25s, 0s;
+        -webkit-transition-delay: $hoverTransitionDelay;
+        transition-delay: $hoverTransitionDelay;
     }
 }
 

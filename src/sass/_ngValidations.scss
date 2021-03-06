@@ -1,0 +1,15 @@
+.ng-invalid {
+    border-left: $invalidColor;
+}
+
+.ng-pristine {
+    border-left: $validColor;
+}
+
+.ng-touched {
+    border-left: $invalidColor;
+}
+
+.ng-valid {
+    border-left: $validColor;
+}

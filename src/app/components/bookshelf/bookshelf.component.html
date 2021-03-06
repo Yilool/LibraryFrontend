@@ -17,7 +17,10 @@
     <div class="col m-1">
         <form (ngSubmit)="registrar(data)" #data="ngForm">
             <div class="form-group">
-                <input class="form-control" type="text" required placeholder="Género de la estantería" [(ngModel)]="bookshelf.genre" name="genre" />
+                <input class="form-control" type="text" required placeholder="Género de la estantería" [(ngModel)]="bookshelf.genre" #genre="ngModel" name="genre" />
+                <div [hidden]="genre.valid || genre.untouched" class="danger">
+                    El género es obligatorio
+                </div>
             </div>
             <hr />
             <div class="form-group">

@@ -2,7 +2,16 @@
     @include center-flex-box();
 }
 
+.column-container {
+    flex-direction: column;
+}
+
 .nav-btn-container {
+    display: flex;
+    flex-flow: row;
+}
+
+.col-row-container {
     display: flex;
     flex-flow: row;
 }
@@ -19,5 +28,10 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+
+    .col-row-container {
+        display: flex;
+        flex-flow: column wrap;
     }
 }
