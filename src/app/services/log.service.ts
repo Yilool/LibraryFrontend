@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
+  Router
 } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { LogUser } from '../interfaces/logUser';
