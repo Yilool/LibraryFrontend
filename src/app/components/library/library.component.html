@@ -25,29 +25,29 @@
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="title">Título</th>
-                <th pSortableColumn="author">Autor</th>
-                <th pSortableColumn="publisher">Editorial</th>
-                <th pSortableColumn="edition">Edición</th>
-                <th pSortableColumn="isbn">ISBN</th>
-                <th pSortableColumn="pages">Página</th>
-                <th pSortableColumn="bookShelf">Estantería</th>
-                <th pSortableColumn="isbn">Estado</th>
+                <th class="sm-none tb-none" pSortableColumn="author">Autor</th>
+                <th class="sm-none tb-none dt-none" pSortableColumn="publisher">Editorial</th>
+                <th class="sm-none tb-none dt-none tv-none" pSortableColumn="edition">Edición</th>
+                <th class="sm-none tb-none" pSortableColumn="isbn">ISBN</th>
+                <th class="sm-none tb-none dt-none tv-none btv-none" pSortableColumn="pages">Página</th>
+                <th class="sm-none" pSortableColumn="bookShelf">Estantería</th>
+                <th class="sm-none tb-none dt-none tv-none btv-none" pSortableColumn="isbn">Estado</th>
                 <th>Operación</th>
             </tr>
             <tr>
                 <th>
                     <p-columnFilter type="text" field="title"></p-columnFilter>
                 </th>
-                <th>
+                <th class="sm-none tb-none">
                     <p-columnFilter type="text" field="author"></p-columnFilter>
                 </th>
-                <th>
+                <th class="sm-none tb-none dt-none">
                     <p-columnFilter type="text" field="publisher"></p-columnFilter>
                 </th>
-                <th>
+                <th class="sm-none tb-none dt-none tv-none">
                     <p-columnFilter type="text" field="edition"></p-columnFilter>
                 </th>
-                <th>
+                <th class="sm-none tb-none">
                     <p-columnFilter type="text" field="isbn"></p-columnFilter>
                 </th>
             </tr>
@@ -55,13 +55,13 @@
         <ng-template pTemplate="body" let-book>
             <tr>
                 <td>{{ book.title }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.publisher }}</td>
-                <td>{{ book.edition }}</td>
-                <td>{{ book.isbn }}</td>
-                <td>{{ book.pages }}</td>
-                <td>{{ book.bookShelf }}</td>
-                <td>
+                <td class="sm-none tb-none">{{ book.author }}</td>
+                <td class="sm-none tb-none dt-none">{{ book.publisher }}</td>
+                <td class="sm-none tb-none dt-none tv-none">{{ book.edition }}</td>
+                <td class="sm-none tb-none">{{ book.isbn }}</td>
+                <td class="sm-none tb-none dt-none tv-none btv-none">{{ book.pages }}</td>
+                <td class="sm-none">{{ book.bookShelf }}</td>
+                <td class="sm-none tb-none dt-none tv-none btv-none">
                     <label *ngIf="book.borrow" class="badge bg-success">Prestado</label>
                     <label *ngIf="!book.borrow" class="badge bg-danger">No prestado</label>
                 </td>

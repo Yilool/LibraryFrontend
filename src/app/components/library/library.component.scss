@@ -1,0 +1,29 @@
+@media screen and (max-width: 400px) {
+    .sm-none {
+        display: none;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+    .tb-none {
+        display: none;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+    .dt-none {
+        display: none;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+    .tv-none {
+        display: none;
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1200px) {
+    .btv-none {
+        display: none;
+    }
+}
