@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // creo el formularios y sus campos con la validaciones
     this.formContent = new FormGroup({
-      username: new FormControl('yiyi', [
+      username: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
       ]),
-      password: new FormControl('yi', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 

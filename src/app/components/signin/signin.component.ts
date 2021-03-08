@@ -20,24 +20,24 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     // creo el formularios y sus campos con la validaciones
     this.formContent = new FormGroup({
-      name: new FormControl('yi', [Validators.required]),
-      surname: new FormControl('yi', [Validators.required]),
-      dni: new FormControl('yiyiyiyiy', [
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      dni: new FormControl('', [
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(9),
       ]),
-      birthdate: new FormControl('yi', [Validators.required]),
-      number: new FormControl('yiyiyiyiy', [
+      birthdate: new FormControl('', [Validators.required]),
+      number: new FormControl('', [
         Validators.required,
         Validators.minLength(9),
         Validators.maxLength(9),
       ]),
-      username: new FormControl('yiyi', [
+      username: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
       ]),
-      password: new FormControl('yi', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
     this.submit = false;
     this.formContent.reset();
   }
-// envía el formulario
+  // envía el formulario
   submitForm() {
     // notificación de cargando para evitar mas acciones
     Swal.fire({
