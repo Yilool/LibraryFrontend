@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Book } from 'src/app/interfaces/book';
+import { Borrow } from 'src/app/interfaces/borrow';
 import { BookService } from 'src/app/services/book.service';
+import { BorrowService } from 'src/app/services/borrow.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,14 +14,21 @@ import Swal from 'sweetalert2';
 export class LibraryComponent implements OnInit {
   // variable
   library: Book[] = [];
+  admin = false;
   loading = false; // boleano para mostrar div de notificación
   first = 0;
   rows = 10;
 
   // contructur con inyecciones de servicios
-  constructor(private bookservice: BookService) {}
+  constructor(
+    private bookservice: BookService,
+    private borrowservice: BorrowService
+  ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('roles') === 'ADMIN') {
+      this.admin = true;
+    }
     // establezco el boleano a verdadero
     this.loading = true;
     // obtengo los libros
@@ -38,6 +47,36 @@ export class LibraryComponent implements OnInit {
           icon: 'error',
         });
         this.loading = false;
+      }
+    );
+  }
+
+  prestar(book: string) {
+    let borrow: Borrow = {
+      username: localStorage.getItem('user'),
+      title: book,
+    };
+
+    Swal.fire({
+      title: 'Realizando el préstamo',
+      icon: 'info',
+    });
+    Swal.showLoading();
+
+    this.borrowservice.borrowBook(borrow).subscribe(
+      (res) => {
+        Swal.fire({
+          title: book,
+          text: 'Prestado',
+          icon: 'success',
+        });
+      },
+      (error) => {
+        Swal.fire({
+          title: `${error.error}`,
+          text: 'Error al prestar',
+          icon: 'error',
+        });
       }
     );
   }

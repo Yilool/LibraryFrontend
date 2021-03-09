@@ -18,6 +18,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { IsLoggedGuard } from './guards/is-logged.guard';
 import { WeComponent } from './components/we/we.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BorrowsComponent } from './components/borrows/borrows.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BookComponent,
     WeComponent,
     NavbarComponent,
+    BorrowsComponent,
   ],
   imports: [
     BrowserModule,

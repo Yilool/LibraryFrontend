@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class SigninComponent implements OnInit {
   // variable
   formContent: FormGroup; // formulario
-  submit = true;
+  submit = false;
 
   // constructor con las inyecciones
   constructor(private signService: SignService, private router: Router) {}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookshelfComponent } from './components/bookshelf/bookshelf.component';
 import { BookshelvesComponent } from './components/bookshelves/bookshelves.component';
+import { BorrowsComponent } from './components/borrows/borrows.component';
 import { LoginComponent } from './components/login/login.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { WeComponent } from './components/we/we.component';
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'bookshelf/new',
     component: BookshelfComponent,
+    canActivate: [IsLoggedGuard],
+  },
+  {
+    path: 'borrows',
+    component: BorrowsComponent,
     canActivate: [IsLoggedGuard],
   },
   {

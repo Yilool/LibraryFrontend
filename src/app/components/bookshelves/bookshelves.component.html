@@ -1,7 +1,7 @@
 <div class="center-container separated-container">
     <h1>Estanterías</h1>
     <div>
-        <div>
+        <div *ngIf="admin">
             <button class="btn" routerLink="/bookshelf/new">
                 <i class="fa fa-swatchbook"></i>
                 <b> Registrar Estantería</b>
@@ -30,7 +30,8 @@
         <tr>
             <td>{{ bookshelf.genre }}</td>
             <td>
-                <button pButton class="m p-button-danger" (click)="borrar(bookshelf)" icon="fa fa-user-times">Borrar</button>
+                <button pButton *ngIf="admin" class="m p-button-danger" (click)="borrar(bookshelf)" icon="fa fa-user-times">Borrar</button>
+                <button pButton *ngIf="!admin" class="m p-button-danger" (click)="borrar(bookshelf)" icon="far fa-bookmark">Genero Favorito</button>
             </td>
         </tr>
     </ng-template>

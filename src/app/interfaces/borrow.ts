@@ -1,4 +1,6 @@
 export interface Borrow {
-    username: string,
-    title: string
+  id?: number;
+  username: string;
+  title: string;
+  deliveryDate?: Date;
 }

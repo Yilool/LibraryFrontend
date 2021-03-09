@@ -1,7 +1,7 @@
 <div class="center-container separated-container">
     <h1>Biblioteca</h1>
     <div>
-        <div>
+        <div *ngIf="admin">
             <button class="btn" routerLink="/books/book/new">
                 <i class="fas fa-book-medical"></i>
                 <b> Registrar Libro</b>
@@ -66,8 +66,9 @@
                     <label *ngIf="!book.borrow" class="badge bg-danger">No prestado</label>
                 </td>
                 <td>
-                    <button pButton [routerLink]="['/books/book/', book.id]" icon="fa fa-user-times">Prestar</button>
-                    <button pButton (click)="borrar(book)" icon="fa fa-user-times">Borrar</button>
+                    <button pButton *ngIf="!admin" (click)="prestar(book.title)" icon="fa fa-user-times">Prestar</button>
+                    <button pButton *ngIf="admin" [routerLink]="['/books/book/', book.id]" icon="fa fa-user-times">Modificar</button>
+                    <button pButton *ngIf="admin" (click)="borrar(book)" icon="fa fa-user-times">Borrar</button>
                 </td>
             </tr>
         </ng-template>

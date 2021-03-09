@@ -11,24 +11,15 @@ import { LogService } from 'src/app/services/log.service';
 export class NavbarComponent implements OnInit {
   // variables
   logedUser = false;
-  roles: any;
 
   // constructor con las inyecciones
-  constructor(
-    private logService: LogService,
-    private router: Router,
-    private rol: AutenticadorJwtService
-  ) {}
+  constructor(private logService: LogService, private router: Router) {}
 
   ngOnInit(): void {
     // pregunta al servicio si esta logueado
     this.logedUser = this.logService.isLoggedIn('');
     this.logService.logStatus$.subscribe((logStat: boolean) => {
       this.logedUser = logStat;
-    });
-    // me suscribo al output del servicio para obtener los roles
-    this.rol.rol.subscribe((res) => {
-      this.roles = res;
     });
   }
 

@@ -1,0 +1,49 @@
+<div class="center-container separated-container">
+    <h1>Préstamos de {{ usuario | uppercase }}</h1>
+</div>
+<hr>
+
+<div>
+    <p-table *ngIf="!loading && borrows.length > 0" #bFilter [value]="borrows" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10]" [loading]="loading" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="[
+        'title',
+        'deliveryDate'
+        ]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="title">Libro</th>
+                <th pSortableColumn="deliveryDate">Fecha Devolución</th>
+                <th>Operación</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="title"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="deliveryDate"></p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-borrow>
+            <tr>
+                <td>{{ borrow.title }}</td>
+                <td class="sm-none tb-none">{{ borrow.deliveryDate | date:'dd/mm/yy' }}</td>
+                <td>
+                    <button pButton (click)="extendDelivery(borrow.id)" icon="fas fa-clock">Ampliar
+                        Préstamo</button>
+                    <button pButton (click)="deliveryBook(borrow.id)" icon="fas fa-undo-alt">Devolver</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <div *ngIf="loading" class="alert-info">
+        <h3>Espere por favor ...</h3>
+        <i class="fa fa-sync-alt fa-spin fa-10x"></i>
+    </div>
+
+    <div *ngIf="!loading && borrows.length === 0 || borrows == null" class="alert-warning">
+        <h3>No se ha realizado prestamos</h3>
+        <i class="fa fa-exclamation fa-10x"></i>
+    </div>
+</div>

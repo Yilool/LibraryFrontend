@@ -3,6 +3,7 @@ import { Bookshelf } from 'src/app/interfaces/bookshelf';
 import { Table } from 'primeng/table';
 import { BookshelfService } from 'src/app/services/bookshelf.service';
 import Swal from 'sweetalert2';
+import { AutenticadorJwtService } from 'src/app/services/autenticador-jwt.service';
 
 @Component({
   selector: 'app-bookshelves',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 export class BookshelvesComponent implements OnInit {
   // variable
   bookshelves: Bookshelf[] = [];
+  admin = false;
   loading = false; // boleano para mostrar div de notificación
   first = 0;
   rows = 10;
@@ -20,6 +22,10 @@ export class BookshelvesComponent implements OnInit {
   constructor(private bookshelfservice: BookshelfService) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('roles') === 'ADMIN') {
+      this.admin = true;
+    }
+
     // establezco el boleano a verdadero
     this.loading = true;
     // obtengo las estanterías
