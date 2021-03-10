@@ -27,7 +27,7 @@
         <ng-template pTemplate="body" let-borrow>
             <tr>
                 <td>{{ borrow.title }}</td>
-                <td class="sm-none tb-none">{{ borrow.deliveryDate | date:'dd/mm/yy' }}</td>
+                <td class="sm-none tb-none">{{ borrow.deliveryDate | date:'dd/MM/yyyy' }}</td>
                 <td>
                     <button pButton (click)="extendDelivery(borrow.id)" icon="fas fa-clock">Ampliar
                         Préstamo</button>

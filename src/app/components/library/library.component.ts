@@ -64,12 +64,13 @@ export class LibraryComponent implements OnInit {
     Swal.showLoading();
 
     this.borrowservice.borrowBook(borrow).subscribe(
-      (res) => {
+      (res: Borrow) => {
         Swal.fire({
           title: book,
-          text: 'Prestado',
+          text: `Fecha Devolucion: ${res.deliveryDate}`,
           icon: 'success',
         });
+        this.ngOnInit();
       },
       (error) => {
         Swal.fire({
@@ -100,9 +101,9 @@ export class LibraryComponent implements OnInit {
             text: 'Eliminado',
             icon: 'success',
           });
+          // reinicio el componente
+          this.ngOnInit();
         });
-        // reinicio el componente
-        this.ngOnInit();
       } else {
         // si respuesta negativa, notifico la cancelacion de la operación
         Swal.fire({

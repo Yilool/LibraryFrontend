@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AutenticadorJwtService } from 'src/app/services/autenticador-jwt.service';
 import { LogService } from 'src/app/services/log.service';
 import Swal from 'sweetalert2';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',

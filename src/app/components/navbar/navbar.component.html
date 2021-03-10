@@ -3,7 +3,7 @@
         <a>BiblYo</a>
         <a [routerLink]="['/books']" routerLinkActive="router-link-active">Biblioteca</a>
         <a [routerLink]="['/bookshelves']" routerLinkActive="router-link-active">Estanterías</a>
-        <a [routerLink]="['/borrows']" routerLinkActive="router-link-active">Préstamos</a>
+        <a *ngIf="!admin" [routerLink]="['/borrows']" routerLinkActive="router-link-active">Préstamos</a>
         <a [routerLink]="['/we']" routerLinkActive="router-link-active">Acerca de Nosotros</a>
     </div>
     <div class="nav-btn-container">

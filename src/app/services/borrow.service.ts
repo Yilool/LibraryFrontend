@@ -11,7 +11,7 @@ export class BorrowService {
   constructor(private http: HttpClient) {}
 
   getUsernameBooks(username: string) {
-    return this.http.get(`${this.endpoint}/${username}`);
+    return this.http.get(`${this.endpoint}/user/${username}`);
   }
 
   borrowBook(borrow: Borrow) {
@@ -19,7 +19,7 @@ export class BorrowService {
   }
 
   extendBorrow(id: number) {
-    return this.http.get(`${this.endpoint}/${id}`);
+    return this.http.get(`${this.endpoint}/borrow/${id}`);
   }
 
   delivery(id: number) {

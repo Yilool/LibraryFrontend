@@ -66,7 +66,7 @@
                     <label *ngIf="!book.borrow" class="badge bg-danger">No prestado</label>
                 </td>
                 <td>
-                    <button pButton *ngIf="!admin" (click)="prestar(book.title)" icon="fa fa-user-times">Prestar</button>
+                    <button pButton *ngIf="!admin && !book.borrow" (click)="prestar(book.title)" icon="fa fa-user-times">Prestar</button>
                     <button pButton *ngIf="admin" [routerLink]="['/books/book/', book.id]" icon="fa fa-user-times">Modificar</button>
                     <button pButton *ngIf="admin" (click)="borrar(book)" icon="fa fa-user-times">Borrar</button>
                 </td>

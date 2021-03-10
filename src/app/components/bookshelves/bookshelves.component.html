@@ -30,7 +30,7 @@
         <tr>
             <td>{{ bookshelf.genre }}</td>
             <td>
-                <button pButton *ngIf="admin" class="m p-button-danger" (click)="borrar(bookshelf)" icon="fa fa-user-times">Borrar</button>
+                <button pButton *ngIf="admin" class="m p-button-danger" icon="fa fa-user-times">Borrar</button>
                 <button pButton *ngIf="!admin" class="m p-button-danger" (click)="borrar(bookshelf)" icon="far fa-bookmark">Genero Favorito</button>
             </td>
         </tr>
