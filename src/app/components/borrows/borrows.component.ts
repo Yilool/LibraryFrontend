@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Borrow } from 'src/app/interfaces/borrow';
 import { BorrowService } from 'src/app/services/borrow.service';
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class BorrowsComponent implements OnInit {
   usuario = localStorage.getItem('user');
   borrows: Borrow[] = [];
+  returns: Borrow[] = [];
   loading = false; // boleano para mostrar div de notificación
   first = 0;
   rows = 10;
@@ -20,16 +22,25 @@ export class BorrowsComponent implements OnInit {
   ngOnInit(): void {
     // establezco el boleano a verdadero
     this.loading = true;
+
+    // this.borrowservice.borrowEmiter.subscribe((res) => {
+    //   this.borrows = res;
+    // });
+    // this.loading = false;
     // obtengo los préstamos
     this.borrowservice.getUsernameBooks(localStorage.getItem('user')).subscribe(
       (res: Borrow[]) => {
-        this.borrows = res;
+        res.forEach((borrow) => {
+          if (!borrow.deleteDate) {
+            this.borrows.push(borrow);
+          } else {
+            this.returns.push(borrow);
+          }
+        });
         this.loading = false;
       },
       // notificación de error para casos de errores
       (error) => {
-        console.log(error);
-
         Swal.fire({
           title: `${error.error}`,
           text: 'Exception',
@@ -75,6 +86,17 @@ export class BorrowsComponent implements OnInit {
 
   // función de devolver prestamo
   deliveryBook(id: number) {
+    // let index;
+
+    // this.borrowservice.delivery(id).subscribe((res: Borrow) => {
+    //   for (let i in this.borrows) {
+    //     if (this.borrows[i].id == id) {
+    //       index = i;
+    //     }
+    //   }
+    //   this.borrows[index] = res;
+    //   this.borrowservice.emitBorrowsChange(this.borrows);
+    // });
     // notificación de confirmación
     Swal.fire({
       title: 'Confirme la operación',

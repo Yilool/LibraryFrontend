@@ -47,3 +47,49 @@
         <i class="fa fa-exclamation fa-10x"></i>
     </div>
 </div>
+
+<hr>
+
+<div class="center-container separated-container">
+    <h1>Historial de préstamos de {{ usuario | uppercase }}</h1>
+</div>
+<hr>
+
+<div>
+    <p-table *ngIf="!loading && returns.length > 0" #bFilter [value]="returns" dataKey="id" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10]" [loading]="loading" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="[
+        'title',
+        'deleteDate'
+        ]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="title">Libro</th>
+                <th pSortableColumn="deleteDate">Devuelto</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="title"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="deleteDate"></p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-borrow>
+            <tr>
+                <td>{{ borrow.title }}</td>
+                <td class="sm-none tb-none">{{ borrow.deleteDate | date:'dd/MM/yyyy' }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <div *ngIf="loading" class="alert-info">
+        <h3>Espere por favor ...</h3>
+        <i class="fa fa-sync-alt fa-spin fa-10x"></i>
+    </div>
+
+    <div *ngIf="!loading && returns.length === 0 || returns == null" class="alert-warning">
+        <h3>No se ha realizado devoluciones</h3>
+        <i class="fa fa-exclamation fa-10x"></i>
+    </div>
+</div>

@@ -74,7 +74,7 @@ export class LibraryComponent implements OnInit {
       },
       (error) => {
         Swal.fire({
-          title: `${error.error}`,
+          title: `${error}`,
           text: 'Error al prestar',
           icon: 'error',
         });

@@ -3,4 +3,5 @@ export interface Borrow {
   username: string;
   title: string;
   deliveryDate?: Date;
+  deleteDate?: Date;
 }
