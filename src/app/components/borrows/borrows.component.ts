@@ -23,10 +23,6 @@ export class BorrowsComponent implements OnInit {
     // establezco el boleano a verdadero
     this.loading = true;
 
-    // this.borrowservice.borrowEmiter.subscribe((res) => {
-    //   this.borrows = res;
-    // });
-    // this.loading = false;
     // obtengo los préstamos
     this.borrowservice.getUsernameBooks(localStorage.getItem('user')).subscribe(
       (res: Borrow[]) => {
@@ -86,17 +82,6 @@ export class BorrowsComponent implements OnInit {
 
   // función de devolver prestamo
   deliveryBook(id: number) {
-    // let index;
-
-    // this.borrowservice.delivery(id).subscribe((res: Borrow) => {
-    //   for (let i in this.borrows) {
-    //     if (this.borrows[i].id == id) {
-    //       index = i;
-    //     }
-    //   }
-    //   this.borrows[index] = res;
-    //   this.borrowservice.emitBorrowsChange(this.borrows);
-    // });
     // notificación de confirmación
     Swal.fire({
       title: 'Confirme la operación',

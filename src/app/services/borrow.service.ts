@@ -6,19 +6,9 @@ import { Borrow } from '../interfaces/borrow';
   providedIn: 'root',
 })
 export class BorrowService {
-  // borrows: Borrow[] = [];
-  // @Output()
-  // borrowEmiter = new EventEmitter<Borrow[]>();
   private endpoint = '/borrow';
 
-  constructor(private http: HttpClient) {
-    // this.getUsernameBooks(localStorage.getItem('user')).subscribe(
-    //   (res: Borrow[]) => {
-    //     this.borrows = res;
-    //     this.emitBorrowsChange(this.borrows);
-    //   }
-    // );
-  }
+  constructor(private http: HttpClient) { }
 
   getUsernameBooks(username: string) {
     return this.http.get(`${this.endpoint}/user/${username}`);
@@ -35,8 +25,4 @@ export class BorrowService {
   delivery(id: number) {
     return this.http.delete(`${this.endpoint}/${id}`);
   }
-
-  // emitBorrowsChange(borrows: Borrow[]) {
-  //   this.borrowEmiter.emit(borrows);
-  // }
 }
