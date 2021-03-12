@@ -1,27 +1,30 @@
-# Biblioteca
+# LibraryFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+Applicación para gestionar una biblioteca con registro de libros y estanterías y préstamos, además de funcionalidad de registro y login
 
-## Development server
+## Comenzando
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-## Code scaffolding
+### Pre-requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Que cosas necesitas tener instalado (herramientas)
 
-## Build
+- Angular
+- VsCode ( u otro software parecido)
+- Chrome ( u otro software parecido)
+- LibraryBackend, descargar e instalar el la ruta siguiente: `https://github.com/Yilool/LibraryBackend`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Instalación
 
-## Running unit tests
+    1º. Clona el proyecto en una carpeta.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    2º. Abre la carpeta con el VsCode.
 
-## Running end-to-end tests
+    3º. Instala LibraryBackend (instalación en el readme del proyecto).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    4º. Abre la consola en esa carpeta.
 
-## Further help
+    5º. Ejecuta `ng serve`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    6º. Una vez terminado abre el navegador en la ruta `http://localhost:4200/`
